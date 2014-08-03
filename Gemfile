@@ -8,6 +8,7 @@ gem 'dbf'
 gem 'progress_bar'
 gem 'underscore-rails'
 gem 'russian'
+gem 'will_paginate'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'

@@ -1,0 +1,15 @@
+<h1>Районы региона <%= @region.title %> </h1>
+
+<table>
+  <tr>
+    <th>Название</th>
+    <th>Тип</th>
+  </tr>
+  <% @locations.each do |location| %>
+    <tr>
+      <td><%= location.title%></td>
+      <td><%= location.location_type  %></td>
+    </tr>
+  <% end %>
+</table>
+

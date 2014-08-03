@@ -3,7 +3,7 @@ class Location < ActiveRecord::Base
 
   belongs_to :parent_location, class_name: 'Location', foreign_key: "location_id"
 
-  enum location_type: [:region, :district, :city, :admin_area, :non_admin_area, :street, :address, :landmark]
+  enum location_type: [:regions, :district, :city, :admin_area, :non_admin_area, :street, :address, :landmark]
 
 
   # recursively collect all parent location nodes and return them in array
@@ -17,6 +17,6 @@ class Location < ActiveRecord::Base
   end
 
   def parent?
-    location_type == 'region'
+    location_type == 'regions'
   end
 end

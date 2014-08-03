@@ -21,17 +21,17 @@ class DbfWrapper
   end
 end
 
-desc "Import all ADDROBJ district aolevel from ADDROBJ dbf of selected Region(). Use rake import path='Path to the DBF file' region='Digit region code'"
+desc "Import all ADDROBJ district aolevel from ADDROBJ dbf of selected Region(). Use rake import path='Path to the DBF file' regions='Digit regions code'"
 task import: :environment do
   raise "Should specify path to dbf file" if ENV['path'].blank?
-  raise "Should specify regioncode" if ENV['region'].blank?
+  raise "Should specify regioncode" if ENV['regions'].blank?
 
   db = DbfWrapper.new(ENV['path'])
-  region = ENV['region']
+  region = ENV['regions']
   puts "start searching of #{ region }"
   parent = db.find_object(:first, { regioncode: region, aolevel: 1 })
   dbp = Location.create(title: "#{ parent.offname } #{ parent.shortname }",
-                  translit: "#{ parent.offname } #{ parent.shortname }".parameterize.underscore, location_type: :region)
+                  translit: "#{ parent.offname } #{ parent.shortname }".parameterize.underscore, location_type: :regions)
 
   db.table.each do |district|
     if district.parentguid == parent.aoguid && district.aolevel == 3
