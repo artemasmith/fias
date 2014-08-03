@@ -1,0 +1,1 @@
+Test task. Rake task import from fias dbf database all district-level of Rostov area.
